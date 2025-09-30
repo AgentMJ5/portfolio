@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring, cubicBezier} from "framer-motion";
 import {
   SiGithub, SiLinkedin, SiGmail,
   SiPython, SiR, SiMysql, SiPostgresql, SiMongodb,
@@ -25,6 +25,8 @@ const GITHUB = "https://github.com/AgentMJ5";
 const RESUME_URL = "/docs/JathinVarmaMandapati.pdf";
 const PHONE = "+91 7013224103";
 const LOCATION = "Hyderabad, India";
+
+const EASE = cubicBezier(0.22, 1, 0.36, 1);
 
 const heroPhrases = ["Building", "Securing", "Explaining"];
 
@@ -253,21 +255,22 @@ const container = {
   hidden: { opacity: 0, y: 10 },
   show: (i = 0) => ({
     opacity: 1, y: 0,
-    transition: { delay: i * 0.06, duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { delay: i * 0.06, duration: 0.6, ease: EASE }
   })
 };
+
 const fadeIn = (delay = 0, y = 14) => ({
   initial: { opacity: 0, y },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-10% 0px" },
-  transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1], round: 0.5 },
+  transition: { duration: 0.5, delay, ease: EASE},
 });
 
 const fadeInList = (delay = 0) => ({
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
   viewport: { once: true, margin: "-12% 0px" },
-  transition: { duration: 0.35, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.35, delay, ease: EASE},
 });
 
 const CompanyBadge = ({ org }: { org: string }) => (
