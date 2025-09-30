@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* hide global scrollbar but keep scrolling */
+html, body {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+
+/* smooth snap */
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+section { scroll-snap-align: start; }
+
+/* pretty inner scrollbar for mini areas */
+.scrollarea { scrollbar-gutter: stable; }
+.scrollarea::-webkit-scrollbar { width: 8px; }
+.scrollarea::-webkit-scrollbar-track { background: transparent; }
+.scrollarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #33415599, #1f293799);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.scrollarea { scrollbar-width: thin; scrollbar-color: #33415599 transparent; }
+
+/* background textures */
+.bg-grid {
+  background-image:
+    radial-gradient(1200px 600px at 20% -10%, rgba(14,165,233,0.08) 0%, transparent 55%),
+    radial-gradient(800px 400px at 120% 10%, rgba(16,185,129,0.08) 0%, transparent 60%),
+    linear-gradient(transparent 0 0),
+    repeating-linear-gradient(90deg, rgba(148,163,184,0.06) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(0deg, rgba(148,163,184,0.04) 0 1px, transparent 1px 120px);
+  background-blend-mode: screen, screen, normal, overlay, overlay;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.bg-noise {
+  position: relative;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.bg-noise::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image: url("/textures/noise-25.jpg"); /* place a tiny noise PNG in public/textures */
+  opacity: 0.09;
 }
