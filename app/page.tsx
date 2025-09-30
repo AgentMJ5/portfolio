@@ -188,7 +188,7 @@ const orgLogo: Record<string, string> = {
 
 /* Professional Journey (resume-aligned) */
 type Step = { period: string; role: string; org: string; location?: string; bullets: string[]; tech?: string[] };
-export const journey: Step[] = [
+const journey: Step[] = [
   {
     period: "Apr 2025 – Present",
     role: "AI Engineer",
@@ -517,58 +517,57 @@ export default function Page() {
       </section>
 
       {/* ===== Professional Journey ===== */}
-<section id="journey" className="py-8 md:py-12">
-  <div className="w-full px-6 md:px-12 xl:px-20 2xl:px-28">
-    <motion.h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center" {...fadeIn(0)}>
-      Professional Journey
-    </motion.h2>
+      <section id="journey" className="py-8 md:py-12">
+        <div className="w-full px-6 md:px-12 xl:px-20 2xl:px-28">
+          <motion.h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center" {...fadeIn(0)}>
+            Professional Journey
+          </motion.h2>
 
-    <div className="relative">
-      {/* vertical rail */}
-      <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-800 md:left-8" />
+          <div className="relative">
+            {/* vertical rail */}
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-slate-800 md:left-8" />
 
-      {/* simple stack; no overflow, no snap */}
-      <div className="space-y-5">
-        {journey.map((s, i) => (
-          <motion.article key={i} {...fadeInList(0.05 * (i + 1))}>
-            <div className="relative border-l border-slate-800 pl-6 md:pl-10">
-              {/* dot */}
-              <span className="absolute -left-[5px] top-7 h-2 w-2 rounded-full bg-emerald-400" />
+            {/* simple stack; no overflow, no snap */}
+            <div className="space-y-5">
+              {journey.map((s, i) => (
+                <motion.article key={i} {...fadeInList(0.05 * (i + 1))}>
+                  <div className="relative border-l border-slate-800 pl-6 md:pl-10">
+                    {/* dot */}
+                    <span className="absolute -left-[5px] top-7 h-2 w-2 rounded-full bg-emerald-400" />
 
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 w-full">
-                <div className="flex items-center gap-3 leading-none">
-                  <CompanyBadge org={s.org} />
-                  <div className="text-slate-400 text-sm md:text-[0.95rem] whitespace-nowrap">
-                    {s.period}
+                    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 w-full">
+                      <div className="flex items-center gap-3 leading-none">
+                        <CompanyBadge org={s.org} />
+                        <div className="text-slate-400 text-sm md:text-[0.95rem] whitespace-nowrap">
+                          {s.period}
+                        </div>
+                      </div>
+
+                      <div className="mt-1 text-2xl font-semibold">
+                        {s.role} — <span className="text-white/95">{s.org}</span>
+                      </div>
+
+                      <ul className="mt-3 list-disc ml-5 text-slate-300 space-y-1">
+                        {s.bullets.map((b, bi) => <li key={bi}>{b}</li>)}
+                      </ul>
+
+                      {s.tech && (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {s.tech.map(t => (
+                            <span key={t} className="px-2 py-0.5 text-xs rounded-full bg-slate-800 border border-slate-700">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-
-                <div className="mt-1 text-2xl font-semibold">
-                  {s.role} — <span className="text-white/95">{s.org}</span>
-                </div>
-
-                <ul className="mt-3 list-disc ml-5 text-slate-300 space-y-1">
-                  {s.bullets.map((b, bi) => <li key={bi}>{b}</li>)}
-                </ul>
-
-                {s.tech && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {s.tech.map(t => (
-                      <span key={t} className="px-2 py-0.5 text-xs rounded-full bg-slate-800 border border-slate-700">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
+                </motion.article>
+              ))}
             </div>
-          </motion.article>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
+          </div>
+        </div>
+      </section>
 
       {/* ===== Featured Projects ===== */}
       <section id="featured" className="min-h-[60svh] flex items-center py-8 md:py-12">
