@@ -45,3 +45,16 @@ section { scroll-snap-align: start; }
   background-image: url("/textures/noise-25.jpg"); /* place a tiny noise PNG in public/textures */
   opacity: 0.09;
 }
+
+/* Reusable hover effect for cards */
+.card-hover {
+  transition: all 0.25s ease-out;
+}
+
+.card-hover:hover {
+  background-color: rgba(30, 41, 59, 0.75); /* slate-800/70 */
+  border-color: rgb(148, 163, 184);         /* slate-400-ish */
+  transform: scale(1.015);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.05);
+}

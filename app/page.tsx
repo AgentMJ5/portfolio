@@ -25,7 +25,6 @@ const GITHUB = "https://github.com/AgentMJ5";
 const RESUME_URL = "/docs/JathinVarmaMandapati.pdf";
 const PHONE = "+91 7013224103";
 const LOCATION = "Hyderabad, India";
-
 const EASE = cubicBezier(0.22, 1, 0.36, 1);
 
 const heroPhrases = ["Building", "Securing", "Explaining"];
@@ -377,10 +376,11 @@ export default function Page() {
 
   return (
     <main className="relative min-h-screen text-slate-100 overflow-x-hidden">
-  <div
-    className="fixed inset-0 -z-10 bg-cover bg-center"
-    style={{ backgroundImage: "url('/textures/night_man.jpg')" }}
-  ></div>
+      <div
+        className="fixed inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: "url('/textures/night_man.jpg')" }}
+      />
+      <div/>
 
       {/* progress bar & top nav */}
       <motion.div style={{ scaleX: progress }} className="fixed top-0 left-0 right-0 h-1 origin-left bg-gradient-to-r from-sky-400 via-emerald-400 to-fuchsia-400 z-50" />
@@ -428,27 +428,19 @@ export default function Page() {
                     transition={{ duration: 0.5 }}
                     className="inline-block rounded-xl bg-slate-900 border border-slate-800 px-5 py-2 text-slate-200 text-lg"
                   >
-                    {heroPhrases[idx]}
+                    {heroPhrases[idx]} AI systems
                   </motion.div>
                 </AnimatePresence>
               </motion.div>
 
               <motion.p className="mt-4 max-w-[80ch] text-3xl md:text-3xl">
-                I build things that pull their weight. I care about snappy UX, small feedback loops,
-                and shipping useful tools over buzzwords. If it helps real people make better calls,
-                I’m in.
+                I build AI systems that earn their keep - secure, explainable, and grounded in real use. I focus on models that behave, guardrails that work, and interfaces that make sense without hand-holding. If it drives clarity, reduces risk, and helps people make faster, better decisions, I’m in.
               </motion.p>
 
               <motion.div className="mt-8 flex flex-wrap gap-4">
-                <a href="#contact" className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 transition text-lg">Get In Touch</a>
-                <a href={RESUME_URL} target="_blank" className="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 transition text-lg">Download Resume</a>
+                <a href="#contact" className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 transition text-lg transition will-change-transform hover:-translate-y-0.5 active:translate-y-0">Get In Touch</a>
+                <a href={RESUME_URL} target="_blank" className="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 transition text-lg transition will-change-transform hover:-translate-y-0.5 active:translate-y-0">Download Resume</a>
               </motion.div>
-
-              <div className="mt-10 opacity-70">
-                <a href="#about" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-lg">
-                  <FiChevronDown /> Scroll
-                </a>
-              </div>
             </div>
 
             {/* RIGHT photo */}
@@ -468,13 +460,10 @@ export default function Page() {
           <div className="grid md:grid-cols-1 gap-6">
             <motion.div {...fadeIn(0.05)}>
               <p className="w-full text-3xl md:text-3xl mx-auto">
-                Hi, I’m Jathin. I like taking fuzzy ideas and turning them into clean, fast,
-                no-drama products. I start simple, prove value, then layer in the fancy bits.
+                Hi, I’m Jathin. I like taking fuzzy ideas and turning them into clean, fast, no-drama products. I start simple, prove value, then layer in the fancy bits. I come from an MSc in Artificial Intelligence, so I know the theory, but I care more about what actually ships.
               </p>
               <p className="w-full text-3xl md:text-3xl mt-4 mx-auto">
-                My style: talk less, ship more. Iterate in public, keep the stack boring where it
-                matters, and make the interface do the explaining. Off-hours it’s notebooks, gaming,
-                hot chocolate, and weird datasets.
+                My style: talk less, build more. Iterate in public, keep the stack boring where it matters, and let the interface do the explaining. Off hours it’s notebooks, gaming, hot chocolate, and weird datasets that turn into side projects when I’m not careful.
               </p>
             </motion.div>
 
@@ -485,7 +474,7 @@ export default function Page() {
                 {k:"AI Experience",v:"2.5+ years"},
                 {k:"Technologies Mastered",v:"15+"},
               ].map(card=>(
-                <div key={card.k} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+                <div key={card.k} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0">
                   <div className="text-slate-400 text-sm">{card.k}</div>
                   <div className="text-3xl font-semibold mt-1">{card.v}</div>
                 </div>
@@ -501,7 +490,7 @@ export default function Page() {
           <motion.h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center" {...fadeIn(0)}>Technical Expertise</motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {techGroups.map((g, gi)=>(
-              <motion.div key={g.title} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6" {...fadeIn(0.05*(gi+1))}>
+              <motion.div key={g.title} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0" {...fadeIn(0.05*(gi+1))}>
                 <h3 className="font-semibold text-xl">{g.title}</h3>
                 <ul className="mt-4 space-y-3">
                   {g.items.map((it)=>(
@@ -538,7 +527,7 @@ export default function Page() {
                     {/* dot */}
                     <span className="absolute -left-[5px] top-7 h-2 w-2 rounded-full bg-emerald-400" />
 
-                    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 w-full">
+                    <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 w-full card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0">
                       <div className="flex items-center gap-3 leading-none">
                         <CompanyBadge org={s.org} />
                         <div className="text-slate-400 text-sm md:text-[0.95rem] whitespace-nowrap">
@@ -578,19 +567,19 @@ export default function Page() {
           <motion.h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center" {...fadeIn(0)}>Featured Projects</motion.h2>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((p, i)=>(
-              <motion.article key={p.title} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition" {...fadeIn(0.05*(i+1))}>
+              <motion.article key={p.title} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 transition card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0" {...fadeIn(0.05*(i+1))}>
                 <h3 className="text-xl font-semibold">{p.title}</h3>
                 <p className="mt-1 text-slate-400">{p.tag}</p>
 
                 <details className="mt-4 group">
-                  <summary className="cursor-pointer font-semibold text-lg">Technical Standpoint</summary>
+                  <summary className="cursor-pointer font-semibold text-lg card-hover">Technical Standpoint</summary>
                   <ul className="mt-2 list-disc ml-5 text-slate-300 space-y-1">
                     {p.technical.map((t, idx)=><li key={idx}>{t}</li>)}
                   </ul>
                 </details>
 
                 <details className="mt-4 group">
-                  <summary className="cursor-pointer font-semibold text-lg">Business Standpoint</summary>
+                  <summary className="cursor-pointer font-semibold text-lg card-hover">Business Standpoint</summary>
                   <ul className="mt-2 list-disc ml-5 text-slate-300 space-y-1">
                     {p.business.map((b, idx)=><li key={idx}>{b}</li>)}
                   </ul>
@@ -606,7 +595,7 @@ export default function Page() {
             <div className="flex justify-center gap-4">
               <a
                 href="#contact"
-                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 transition text-lg"
+                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 transition text-lg transition will-change-transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 Let’s Work Together
               </a>
@@ -621,7 +610,7 @@ export default function Page() {
           <motion.h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center" {...fadeIn(0)}>Publications and Certifications</motion.h2>
           <div className="grid md:grid-cols-2 gap-6">
             {/* Publications */}
-            <motion.div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6" {...fadeIn(0.05)}>
+            <motion.div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0" {...fadeIn(0.05)}>
               <div className="flex items-center gap-2 font-semibold text-xl">
                 <FiBookOpen /> Publications
               </div>
@@ -653,7 +642,7 @@ export default function Page() {
             </motion.div>
 
             {/* Certifications */}
-            <motion.div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6" {...fadeIn(0.1)}>
+            <motion.div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0" {...fadeIn(0.1)}>
               <div className="flex items-center gap-2 font-semibold text-xl">
                 <FiAward /> Certifications
               </div>
@@ -693,7 +682,7 @@ export default function Page() {
             <div className="flex justify-center">
               <a
                 href="#contact"
-                className="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 transition text-lg"
+                className="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 transition text-lg transition will-change-transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 Let’s Collab
               </a>
@@ -711,7 +700,7 @@ export default function Page() {
 
           <div className="grid md:grid-cols-[1.3fr_1fr] gap-8">
             {/* Form (EmailJS) */}
-            <motion.div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6" {...fadeIn(0.05)}>
+            <motion.div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover transition will-change-transform hover:-translate-y-0.5 active:translate-y-0" {...fadeIn(0.05)}>
               <div className="text-slate-300">Send me a message</div>
               <EmailContactForm />
               <p className="text-slate-400 text-sm mt-2">Powered by EmailJS</p>
@@ -719,7 +708,7 @@ export default function Page() {
 
             {/* Contact Info with icons */}
             <motion.div className="grid gap-4" {...fadeIn(0.1)}>
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover">
                 <div className="text-slate-300">Contact Information</div>
                 <ul className="mt-3 space-y-3 text-slate-200">
                   <li className="flex items-center gap-3">
@@ -743,11 +732,11 @@ export default function Page() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 card-hover">
                 <div className="text-slate-300">Follow</div>
                 <div className="mt-4 flex items-center gap-4">
-                  <a href={GITHUB} target="_blank" className="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-2xl"><SiGithub /></a>
-                  <a href={LINKEDIN} target="_blank" className="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-2xl"><SiLinkedin /></a>
+                  <a href={GITHUB} target="_blank" className="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-2xl card-hover"><SiGithub /></a>
+                  <a href={LINKEDIN} target="_blank" className="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-2xl card-hover"><SiLinkedin /></a>
                 </div>
               </div>
             </motion.div>
